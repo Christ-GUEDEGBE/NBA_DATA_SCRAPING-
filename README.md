@@ -60,21 +60,30 @@ docker-compose up -d
 pip install -r requirements.txt
 python scripts/nba_scraper.py
 ```
-🚀 Getting Started
-Set up environment:
 
+## 🚀 Getting Started
+
+### Set up environment:
+```
 python -m venv .venv
 source .venv/bin/activate  # Linux/Mac
 .\.venv\Scripts\activate  # Windows
+```
 
-Install dependencies:
+### Install dependencies:
+```
 pip install -r requirements.txt
+```
 
-Configure database:
+### Configure database:
+```
 docker-compose up -d
+```
 
-Run the scraper:
+### Run the scraper:
+```
 python scripts/nba_scraper.py
+```
 
 
 
