@@ -1,94 +1,140 @@
-# � NBA Stats Scraper with PostgreSQL
+# NBA Stats Scraper and Database Loader
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13%2B-336791)
-![Docker](https://img.shields.io/badge/Docker-20.10%2B-2496ED)
-![Data Analysis](https://img.shields.io/badge/Potential_Use_Cases-Data_Analysis%7CML%7CVisualization-FFA500)
+## 📌 Project Overview
 
-This project provides an automated pipeline to collect, store, and analyze NBA player statistics, designed for easy extension to data analysis and machine learning projects. Here's exactly how it works:
-
-1. **The Scraper (`scripts/nba_scraper.py`)**:
-   - Uses Selenium to extract player data from [NBA.com/stats](https://www.nba.com/stats)
-   - Handles pagination to collect complete datasets
-   - Cleans and prepares the data (handling special characters like ć, é, etc.)
-   - Saves results to both PostgreSQL and CSV
-
-2. **The Database Setup**:
-   - PostgreSQL runs in a Docker container for easy setup
-   - Automatic table creation with proper data types
-   - Special configuration for UTF-8 character support
-
-3. **The Environment**:
-   - Virtual environment (`.venv` folder) isolates dependencies
-   - `requirements.txt` lists all required Python packages
-   - `.env` file stores sensitive configuration separately
-
+This project scrapes NBA player statistics from the official NBA website, cleans and processes the data, then stores it in both a PostgreSQL database and CSV files for analysis. The system handles special characters (like Nikola Jokić) through UTF-8 encoding and provides data backup capabilities.
 
 ## 🏗️ Project Structure
 
-NBA_SCRAPER/
-├── docker/
-│ └── postgres/ # PostgreSQL configuration
-│ ├── init.sql # Database initialization
-│ └── pgdata/ # Persistent volume
-├── scripts/
-│ └── nba_scraper.py # Main scraping script
-├── data/ # Auto-generated CSV exports
-├── .env # Environment variables
-├── docker-compose.yml # Docker orchestration
+
+FINAL/
+├── venv/ # Virtual environment
+├── vscode/ # VSCode configuration
+│
+├── character_issues_report.csv # Report of players with special characters
+├── init.db.sql # SQL script for database initialization
+├── main_file.py # Main script (scraping, cleaning, loading)
+├── nba_stats_20250407.csv # Example output CSV
 ├── requirements.txt # Python dependencies
-└── README.md # This file
+└── TEST.sql # Test SQL queries
 
 
-## 🚀 Getting Started
+## 🛠️ Key Features
 
-### Prerequisites
-- Docker Desktop ([download](https://www.docker.com/products/docker-desktop))
-- Python 3.9+
+1. **Web Scraping**
+   - Uses Selenium to scrape player stats from NBA.com
+   - Handles pagination to collect complete datasets
+   - Robust error handling for web elements
 
-### Installation
-```bash
-git clone https://github.com/your-username/nba-scraper.git
-cd nba-scraper
+2. **Data Processing**
+   - Cleans and standardizes column names
+   - Converts numeric values to proper data types
+   - Adds metadata (timestamp, season info)
 
-# Set up environment
-cp .env.example .env
-nano .env  # Edit with your credentials
+3. **Database Integration**
+   - PostgreSQL storage with UTF-8 encoding
+   - Environment variable configuration for security
+   - SQLAlchemy for ORM functionality
 
-# Launch services
-docker-compose up -d
+4. **Backup System**
+   - Automatic CSV exports with timestamped filenames
+   - Special character reporting
+
+## ⚙️ Installation
+
+1. Clone the repository
+2. Set up a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   venv\Scripts\activate    # Windows
+   
+3.Install dependencies:
+```
 pip install -r requirements.txt
-python scripts/nba_scraper.py
+```
+4.Set up PostgreSQL and create a .env file with your database credentials:
+```
+DB_HOST=your_host
+DB_NAME=your_db
+DB_USER=your_user
+DB_PASSWORD=your_password
+DB_PORT=5432
 ```
 
-## 🚀 Getting Started
-
-### Set up environment:
+## 🚀 Usage
+Run the main script:
 ```
-python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-.\.venv\Scripts\activate  # Windows
+python main_file.py
 ```
 
-### Install dependencies:
+The script will:
+
+Scrape data from NBA.com
+
+Clean and process the statistics
+
+Save to PostgreSQL
+
+Create a CSV backup
+
+Generate a character issues report
+
+## Database Schema
+- The player_stats table includes:
+
+- Player information (name, team, position)
+
+- Statistical data (points, rebounds, assists, etc.)
+
+- Metadata (season, last update timestamp)
+
+Initialize the database with:
+
 ```
-pip install -r requirements.txt
+psql -U your_user -d your_db -f init.db.sql
 ```
 
-### Configure database:
-```
-docker-compose up -d
-```
+📄 File Descriptions
+- main_file.py: Main script with all functionality
 
-### Run the scraper:
-```
-python scripts/nba_scraper.py
-```
+- init.db.sql: Database initialization script
 
+- requirements.txt: Python dependencies
 
+- TEST.sql: Example queries for testing
 
+- nba_stats_YYYYMMDD.csv: Generated data backups
 
-
+- character_issues_report.csv: Players with special characters
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
