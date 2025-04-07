@@ -8,7 +8,7 @@ This project scrapes NBA player statistics from the official NBA website, cleans
 
 ## 🏗️ Project Structure
 
-![Jordan_picture](images/vool.jpeg)
+![structure](images/vool.jpeg)
 
 ## 🛠️ Key Features
 
