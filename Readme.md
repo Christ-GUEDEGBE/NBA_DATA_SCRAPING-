@@ -8,18 +8,7 @@ This project scrapes NBA player statistics from the official NBA website, cleans
 
 ## 🏗️ Project Structure
 
-
-FINAL/
-├── venv/ # Virtual environment
-├── vscode/ # VSCode configuration
-│
-├── character_issues_report.csv # Report of players with special characters
-├── init.db.sql # SQL script for database initialization
-├── main_file.py # Main script (scraping, cleaning, loading)
-├── nba_stats_20250407.csv # Example output CSV
-├── requirements.txt # Python dependencies
-└── TEST.sql # Test SQL queries
-
+![Jordan_picture](images/vool.jpeg)
 
 ## 🛠️ Key Features
 
