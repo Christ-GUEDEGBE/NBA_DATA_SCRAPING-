@@ -1,4 +1,4 @@
-![Jordan_picture](images\Jordan.jpeg)
+![Jordan_picture](images/Jordan.jpeg)
 
 # NBA Stats Scraper and Database Loader
 
