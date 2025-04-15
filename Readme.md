@@ -7,7 +7,7 @@
 This project scrapes NBA player statistics from the official NBA website, cleans and processes the data, then stores it in both a PostgreSQL database and CSV files for analysis. The system handles special characters (like Nikola Jokić) through UTF-8 encoding and provides data backup capabilities.
 
 ## 🏗️ Project Structure
-![nba](images/NBA.jpg)
+![nba](images/NBA.png)
 
 ![structure](images/vool.jpeg)
 
